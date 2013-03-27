@@ -1,10 +1,9 @@
-vimeo-php-lib
-=============
+<?php 
 
-Added namespace support to Official vimeo-php-lib.
+function __autoload($class_name) {
+    include $class_name . '.php';
+}
 
-Usage
-=====
 
 $vimeo = new \Vimeo\Vimeo('api', 'secret', 'token', 'token_secret');
 
@@ -20,8 +19,3 @@ $vimeo = new \Vimeo\Vimeo('api', 'secret', 'token', 'token_secret');
         );
 
  echo $response;
-
-
- TODO
- ====
- Add composer support
