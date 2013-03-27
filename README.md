@@ -13,7 +13,7 @@ Install with composer
 Usage
 =====
 <pre>
-$vimeo = new \Vimeo\Vimeo('api', 'secret', 'token', 'token_secret');
+$vimeo = new \MAE\Vimeo('api', 'secret', 'token', 'token_secret');
 
  $response = $vimeo->call(
             'vimeo.channels.getAll',
