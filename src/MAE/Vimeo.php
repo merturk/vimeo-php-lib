@@ -1,6 +1,6 @@
 <?php
 
-namespace Vimeo;
+namespace MAE;
 
 class Vimeo
 {

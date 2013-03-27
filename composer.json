@@ -1,8 +1,8 @@
 {
     "name": "merturk/vimeo-php-lib",
     "type": "library",
-    "description": "Vimoe Php Lib",
-    "keywords": ["vimeo", "video", "videos"],
+    "description": "Vimeo Php Lib",
+    "keywords": ["oauth", "vimeo", "video", "videos"],
     "homepage": "https://github.com/merturk/vimeo-php-lib",
     "license": "MIT",
     "authors": [
@@ -12,7 +12,7 @@
         }
     ],
     "autoload": {
-        "psr-0": { "Vimeo\\Vimeo" : "src/" }
+        "psr-0": { "MAE\\Vimeo" : "src/" }
     },
     "require": {
         "php": ">=5.3.2"
