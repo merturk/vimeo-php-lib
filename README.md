@@ -23,5 +23,5 @@ $vimeo = new \Vimeo\Vimeo('api', 'secret', 'token', 'token_secret');
 
 
  TODO
- ====
+=====
  Add composer support
