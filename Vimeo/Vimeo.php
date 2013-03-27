@@ -1,5 +1,8 @@
 <?php
-class phpVimeo
+
+namespace Vimeo;
+
+class Vimeo
 {
     const API_REST_URL = 'http://vimeo.com/api/rest/v2';
     const API_AUTH_URL = 'http://vimeo.com/oauth/authorize';
@@ -230,17 +233,17 @@ class phpVimeo
         }
 
         // Return
-        if (!empty($method)) {
-            $response = unserialize($response);
-            if ($response->stat == 'ok') {
-                return $response;
-            }
-            else if ($response->err) {
-                throw new VimeoAPIException($response->err->msg, $response->err->code);
-            }
-
-            return false;
-        }
+//        if (!empty($method)) {
+//            $response = unserialize($response);
+//            if ($response->stat == 'ok') {
+//                return $response;
+//            }
+//            else if ($response->err) {
+//                throw new VimeoAPIException($response->err->msg, $response->err->code);
+//            }
+//
+//            return false;
+//        }
 
         return $response;
     }
@@ -460,9 +463,9 @@ class phpVimeo
 
             // Generate the OAuth signature
             $params = array_merge($params, array(
-                'oauth_signature' => $this->_generateSignature($params, 'POST', self::API_REST_URL),
-                'file_data'       => '@'.$chunk['file'] // don't include the file in the signature
-            ));
+                    'oauth_signature' => $this->_generateSignature($params, 'POST', self::API_REST_URL),
+                    'file_data'       => '@'.$chunk['file'] // don't include the file in the signature
+                ));
 
             // Post the file
             $curl = curl_init($endpoint);
@@ -488,9 +491,9 @@ class phpVimeo
 
         // Complete the upload
         $complete = $this->call('vimeo.videos.upload.complete', array(
-            'filename' => $file_name,
-            'ticket_id' => $ticket
-        ));
+                'filename' => $file_name,
+                'ticket_id' => $ticket
+            ));
 
         // Clean up
         if (count($chunks) > 1) {
@@ -527,7 +530,12 @@ class phpVimeo
     public static function url_encode_rfc3986($input)
     {
         if (is_array($input)) {
-            return array_map(array('phpVimeo', 'url_encode_rfc3986'), $input);
+            $result = array();
+            foreach($input as $k => $v) {
+                $result[$k] = urlencode($v);
+            }
+            return $result;
+            //return array_map(array('Vimeo', 'url_encode_rfc3986'), $input);
         }
         else if (is_scalar($input)) {
             return str_replace(array('+', '%7E'), array(' ', '~'), rawurlencode($input));
@@ -538,5 +546,3 @@ class phpVimeo
     }
 
 }
-
-class VimeoAPIException extends Exception {}
