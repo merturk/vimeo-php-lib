@@ -5,10 +5,10 @@ Added namespace support to Official vimeo-php-lib.
 
 Usage
 =====
-
+<pre>
 $vimeo = new \Vimeo\Vimeo('api', 'secret', 'token', 'token_secret');
 
- $response = $vimeo->call(
+$response = $vimeo->call(
             'vimeo.channels.getAll',
             array(
                 'format' => 'json',
@@ -19,9 +19,11 @@ $vimeo = new \Vimeo\Vimeo('api', 'secret', 'token', 'token_secret');
             )
         );
 
- echo $response;
+echo $response;
+</pre>
 
+[test.php](test.php)
 
  TODO
 =====
- Add composer support
+- Add composer support
